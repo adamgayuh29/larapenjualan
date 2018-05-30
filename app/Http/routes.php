@@ -47,3 +47,6 @@ Route::post('/detailpenjualan/create','DetailpenjualanController@store');
 Route::get('/cust``omer/{detailpenjualan}/edit', 'DetailpenjualanController@edit')->name('detailpenjualan.edit');
 Route::patch('/detailpenjualan/{detailpenjualan}/edit', 'DetailpenjualanController@update')->name('detailpenjualan.update');
 Route::delete('/detailpenjualan/{detailpenjualan}/delete', 'DetailpenjualanController@destroy')->name('detailpenjualan.destroy');
+Route::get('/detailpenjualan/{detailpenjualan}/json','DetailpenjualanController@json')->name('detailpenjualan.json');
+Route::get('/cari', 'DetailpenjualanController@loadData');
+Route::get('query', 'DetailpenjualanController@loadData');

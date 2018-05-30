@@ -16,6 +16,10 @@
                     <label for="">Harga</label>
                     <input type="text" class="form-control" name="harga" placeholder="Masukan Harga Barang">
                   </div>
+                  <div class="form-group">
+                    <label for="">Stock</label>
+                    <input type="text" class="form-control" name="stock" placeholder="Masukan Stock Barang">
+                  </div>
                 <div class="form-group">
                   <input type="submit" value="Save" class="btn btn-primary btn-sm">
                 </div>

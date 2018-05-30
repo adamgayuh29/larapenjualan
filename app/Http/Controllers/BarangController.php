@@ -27,6 +27,8 @@ class BarangController extends Controller
 			Barang::create([
 				'nama_barang'   => request('nama_barang'),
 				'harga'         => request('harga'),
+				'stock'         => request('stock'),
+
 			]);
 			return redirect('/barang');
 		}
@@ -42,7 +44,8 @@ class BarangController extends Controller
     {   
         $barang->update([
             'nama_barang'=> request('nama_barang'),
-            'harga'      => request('harga')
+            'harga'      => request('harga'),
+            'stock'      => request('stock'),
         ]);
         return redirect('/barang');
     }

@@ -10,6 +10,7 @@ use App\Penjualan;
 use App\Barang;
 use App\Customer;
 use DB;
+use App\Crud;
 
 
 class DetailpenjualanController extends Controller
@@ -17,7 +18,6 @@ class DetailpenjualanController extends Controller
      public function index(){
 			$detailpenjualans = Detailpenjualan::All();
 			$detailpenjualans = DB::table('detailpenjualans')
-				->join('penjualans','penjualans.id', '=', 'detailpenjualans.penjualan_id')
 				->join('customers','customers.id','=','detailpenjualans.customer_id')
 				->join('barangs','barangs.id','=','detailpenjualans.barang_id')
 				->get();
@@ -42,11 +42,13 @@ class DetailpenjualanController extends Controller
 			return view('detailpenjualan.create',$data);
     }
 
-     public function store(){
+     public function store(Request $request){
+     	// return $request->all();
 			Detailpenjualan::create([
-				'penjualan_id'   => request('penjualan_id'),
-				'customer_id'    => request('customer_id'),
-				'barang_id'		=> request('barang_id'),
+				'penjualan_id'   => $request->penjualan_id,
+				'customer_id'    => $request->customer_id,
+				'barang_id'		=> $request->barang_id,
+				'jumlah'		=> $request->jumlah,
 			]);
 			return redirect('/detailpenjualan');
 		}
@@ -71,4 +73,22 @@ class DetailpenjualanController extends Controller
         $detailpenjualan->delete();
         return redirect()->route('detailpenjualan.index');
     } 
+    public function harga()
+	{
+		$input = Input::get('cari');
+		$name = \App\Orang::where('Name', 'LIKE', '%'.$input.'%')->get();
+		return view('result', compact('name'));
+	}
+
+	public function json(){
+        return Datatables::of(transaksi::all())->make(true);
+    }
+
+     public function loadData(Request $request)
+    {
+    	 $query = $request->get('q');
+        $hasil = Crud::where('nama_customer', 'LIKE', '%' . $query . '%')->paginate(10);
+
+        return view('index', compact('hasil', 'query'));
+    }
 }

@@ -9,21 +9,14 @@
             <form action="{{ url('/detailpenjualan/create') }}" method="post">
               {{ csrf_field() }}
                 <div class="form-group">
-                  <label for="">Penjualan Detail ID</label>
-                  <select name="penjualan_id" id="" class="form-control">
-                  @foreach($penjualans as $p)
-                  <option value="<?=$p->id?>"><?=$p->no_faktur?></option>
-                  @endforeach
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="">Penjualan Detail ID</label>
+                  <label for="">Nama Customer</label>
                   <select name="customer_id" id="" class="form-control">
                   @foreach($customers as $c)
                   <option value="<?=$c->id?>"><?=$c->nama_customer?></option>
                   @endforeach
                   </select>
                 </div>
+
                 <div class="form-group">
                   <label for="">Barang</label>
                   <select name="barang_id" id="" class="form-control">
@@ -32,6 +25,12 @@
                   @endforeach
                   </select>
                 </div>
+
+                <div class="form-group">
+                  <label for="">Jumlah</label>
+                 <input type="number" class="form-control" name="jumlah">
+                </div>
+
                 <div class="form-group">
                   <input type="submit" value="Save" class="btn btn-primary btn-sm">
                 </div>

@@ -58,9 +58,8 @@
                         <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                         <li><a href="{{ url('/barang') }}">Barang</a></li>
-                        <li><a href="{{ url('/customer') }}">Customer</a></li>
-                        <li><a href="{{ url('/detailpenjualan') }}">Penjualan Detail</a></li>
-                        <li><a href="{{ url('/penjualan') }}">Penjualan</a></li>
+                        <li><a href="{{ url('/customer') }}">Kasir</a></li>
+                        <li><a href="{{ url('/detailpenjualan') }}">Transaksi</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
@@ -73,6 +72,8 @@
                     @endif
                 </ul>
             </div>
+            
+            
         </div>
     </nav>
 
